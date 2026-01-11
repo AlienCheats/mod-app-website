@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moderator Application</title>
+</head>
+<body>
+
+<h1>Moderator Application</h1>
+
+<form id="app">
+  <input name="age" required placeholder="How old are you?" /><br><br>
+  <input name="discord" required placeholder="Discord username (with tag)" /><br><br>
+  <input name="timezone" required placeholder="Time zone (EST, GMT+1, etc)" /><br><br>
+
+  <textarea name="experience" required placeholder="Roblox scripting experience"></textarea><br><br>
+  <textarea name="helping" required placeholder="Helping people example"></textarea><br><br>
+  <textarea name="activity" required placeholder="How active can you be?"></textarea><br><br>
+  <textarea name="moderation" required placeholder="Past moderation experience"></textarea><br><br>
+  <textarea name="malicious" required placeholder="Handling malicious scripts"></textarea><br><br>
+  <textarea name="drama" required placeholder="Handling drama"></textarea><br><br>
+  <textarea name="why" required placeholder="Why should we trust you?"></textarea><br><br>
+
+  <button type="submit">Apply</button>
+</form>
+
+<script>
+document.getElementById("app").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = Object.fromEntries(new FormData(e.target));
+
+  const res = await fetch("/api/apply", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+
+  if (res.ok) alert("Application submitted!");
+  else alert("Error submitting application.");
+});
+</script>
+
+</body>
+</html>
