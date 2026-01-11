@@ -4,7 +4,6 @@
   <title>Moderator Application</title>
 </head>
 <body>
-
 <h1>Moderator Application</h1>
 
 <form id="app">
@@ -26,7 +25,6 @@
 <script>
 document.getElementById("app").addEventListener("submit", async (e) => {
   e.preventDefault();
-
   const data = Object.fromEntries(new FormData(e.target));
 
   const res = await fetch("/api/apply", {
@@ -39,6 +37,5 @@ document.getElementById("app").addEventListener("submit", async (e) => {
   else alert("Error submitting application.");
 });
 </script>
-
 </body>
 </html>
